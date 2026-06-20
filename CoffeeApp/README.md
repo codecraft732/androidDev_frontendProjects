@@ -1,81 +1,93 @@
-# ☕ Coffee App - Modern Jetpack Compose UI
+# ☕ CoffeeApp - Premium UI with Jetpack Compose
 
-A beautifully designed, responsive Coffee Application built entirely with **Jetpack Compose**. This project demonstrates modern Android development practices, interactive UI components, and seamless navigation.
+A modern, sleek, and fully responsive Coffee Application built with **Jetpack Compose**. This project focuses on high-quality UI/UX design, interactive elements, and robust navigation, providing a delightful user experience for coffee enthusiasts.
+
+---
 
 ## 📸 Screenshots
+<p align="center">
+  <img src="app/src/main/res/drawable/img1.jpeg" width="120">
+  <img src="app/src/main/res/drawable/img2.jpeg" width="120">
+  <img src="app/src/main/res/drawable/img3.jpeg" width="120">
+</p>
 
-| Welcome Screen | Home Screen | Detail Screen |
-| :---: | :---: | :---: |
-| ![Welcome](https://via.placeholder.com/200x400?text=Welcome+Screen) | ![Home](https://via.placeholder.com/200x400?text=Home+Screen) | ![Detail](https://via.placeholder.com/200x400?text=Detail+Screen) |
+<p align="center">
+  <img src="app/src/main/res/drawable/img4.jpeg" width="120">
+  <img src="app/src/main/res/drawable/img5.jpeg" width="120">
+  <img src="app/src/main/res/drawable/img6.jpeg" width="120">
+</p>
 
-| Order Summary | Wishlist | Profile |
-| :---: | :---: | :---: |
-| ![Order](https://via.placeholder.com/200x400?text=Order+Summary) | ![Wishlist](https://via.placeholder.com/200x400?text=Wishlist) | ![Profile](https://via.placeholder.com/200x400?text=Profile) |
-
-*(Note: Replace placeholder links with actual screenshots from your device/emulator)*
-
----
-
-## 🚀 Topics & Concepts Covered
-
-### 1. **Jetpack Compose Fundamentals**
-- **Composable Functions:** Modular and reusable UI components.
-- **State Management:** Using `remember`, `mutableStateOf`, and `mutableStateListOf` to handle UI updates and user interactions.
-- **Modifiers:** Extensive use of `Modifier` for layout, styling, click handling, and spacing.
-
-### 2. **Responsive Design**
-- **Adaptive Layouts:** Using `LazyVerticalGrid` with `GridCells.Adaptive` to ensure the product grid looks great on all screen sizes (phones, tablets).
-- **Flexible Components:** Using `weight` in `Row` and `Column` to distribute space proportionally.
-- **BoxWithConstraints:** (Implicitly handled) ensuring text and images scale correctly.
-
-### 3. **Navigation**
-- **Navigation Compose:** Implementation of `NavHost`, `NavController`, and `composable` routes.
-- **Deep Linking/Arguments:** Passing data (like `coffeeId`) between screens.
-- **Bottom Navigation:** Integrated `NavigationBar` for quick access to main sections.
-
-### 4. **Material Design 3 (M3)**
-- **Scaffold:** Standard layout structure with `TopAppBar`, `BottomBar`, and `SnackbarHost`.
-- **Theming:** Custom `CoffeeAppTheme` with specialized colors (Brown, Dark Gray) and typography.
-- **Components:** `Card`, `Button`, `TextField`, `IconButton`, and `HorizontalDivider`.
-
-### 5. **Advanced UI Components**
-- **Lazy Lists:** `LazyRow` for categories and `LazyColumn` for orders and wishlist.
-- **Graphics & Styling:** 
-    - `Brush.verticalGradient` for the welcome screen overlay.
-    - `RoundedCornerShape` for modern aesthetics.
-    - `ContentScale.Crop` for high-quality image presentation.
+### [Screenshots Gallery]
+- **Welcome Screen**: Beautiful landing with gradient overlays.
+- **Home Screen**: Dynamic dashboard with search, promo, and categories.
+- **Detail Screen**: Interactive product view with size selection.
+- **Order Summary**: Complete cart management and payment breakdown.
+- **Wishlist & Profile**: Personalized user sections.
 
 ---
 
-## 🛠️ How it was Built
-
-1.  **Architecture:** The app follows a clean separation of concerns. UI screens are located in the `UiScreens` package, and data models are in the `data` package.
-2.  **Resources:** Utilized local drawables for coffee types and promotional banners.
-3.  **Dependencies:**
-    - `androidx.navigation:navigation-compose` for screen transitions.
-    - `androidx.compose.material3` for the latest UI components.
-    - `androidx.compose.material:material-icons-extended` for a rich set of icons.
+## 🌟 Features
+- **Responsive Layouts:** The UI automatically adjusts to different screen sizes using adaptive grids and flexible proportions.
+- **Dynamic Selection:** Interactive selection for coffee flavors and cup sizes (S, M, L) with instant UI feedback.
+- **Smooth Navigation:** A complete flow from a beautiful Welcome screen to a detailed Product view and Order Summary.
+- **Clean Order Management:** A dedicated screen to manage your cart, quantities, and delivery options.
+- **Modern Aesthetics:** Uses rounded corners, gradients, and a rich color palette (featuring signature Coffee Brown `#DEA580`).
 
 ---
 
-## 🏗️ How to Build
-
-1.  Clone the repository.
-2.  Open the project in **Android Studio (Ladybug or later)**.
-3.  Let Gradle sync finish.
-4.  Run the `app` module on an emulator or physical device.
-
----
-
-## 🗺️ Navigation Structure
-
-- **`welcome`**: The landing page with a "Get Started" call to action.
-- **`home`**: The main dashboard with search, promo, and coffee grid.
-- **`detail/{coffeeId}`**: Detailed view of a specific coffee item.
-- **`wishlist`**: Saved favorites.
-- **`order_summary`**: Cart and checkout summary.
-- **`profile`**: User account and address information.
+## 🛠 Tech Stack
+- **Kotlin:** The primary language for modern Android development.
+- **Jetpack Compose:** A declarative UI toolkit for building native Android interfaces.
+- **Material Design 3 (M3):** The latest design system for a consistent and modern look.
+- **Jetpack Navigation:** Seamless transitions between different app screens.
+- **State Management:** Efficient use of `remember`, `mutableStateOf`, and `mutableStateListOf` to keep the UI in sync with data.
 
 ---
 
-*Built with ❤️ for Coffee Lovers and Developers.*
+## 📂 Project Structure & Code Flow
+
+The project is structured logically to keep the code organized and easy to understand:
+
+### 🚀 Application Entry
+- **`MainActivity.kt`**: The heart of the app. It hosts the `CoffeeAppNavigation`, which defines all the routes (Welcome, Home, Detail, etc.) and manages the app's overall flow.
+
+### 🎨 UI Screens (`com.example.coffeeapp.UiScreens`)
+- **`Welcome.kt`**: The onboarding experience. Uses a full-screen background image with a gradient overlay to welcome the user.
+- **`Home.kt`**: The main hub.
+    - Features a **Header** with location details.
+    - Includes a custom **Search Bar** and a **Promo Banner**.
+    - Displays **Category Chips** for easy filtering.
+    - Uses a **LazyVerticalGrid** for a responsive coffee product list.
+- **`coffeeItem.kt`**: The Detail screen. Shows in-depth info about a coffee item, rating, and size selection.
+- **`OrdersList.kt`**: The Order Summary/Cart screen. Handles quantity adjustments, delivery/pickup toggles, and payment summaries.
+- **`Whislist.kt`**: A minimalist screen to view saved favorite coffees.
+- **`Profile.kt`**: Manages user profile information and delivery addresses.
+
+### 📦 Data Layer (`com.example.coffeeapp.data`)
+- **`Coffee.kt`**: A data class that defines the core Coffee model (Price, Rating, Image, etc.).
+- **`FlavorData.kt`**: A simple model for categorization.
+
+### 🖌 Styling (`com.example.coffeeapp.ui.theme`)
+- **`Theme.kt`, `Color.kt`, `Type.kt`**: Centralizes the app's look and feel, ensuring consistent colors and professional typography across all screens.
+
+---
+
+## ⚙️ How the Code Works (The Flow)
+1.  **Launch:** The app starts at `MainActivity`, which immediately shows the `WelcomeScreen`.
+2.  **Onboarding:** Clicking "Get Started" navigates the user to the `HomeScreen`.
+3.  **Discovery:** In the `HomeScreen`, users can search or tap on categories. The **Single Selection** logic ensures that only one flavor is active at a time.
+4.  **Deep Dive:** Tapping on a coffee card opens the `CoffeeDetailScreen`, passing the specific coffee's ID to fetch its details.
+5.  **Checkout:** From the detail screen or navigation, users can reach the `OrderSummaryScreen` to finalize their purchase.
+
+---
+
+## 🎓 Topics Covered
+- **Modern Android Architecture:** Navigation-based UI flow.
+- **Declarative UI Design:** Building components that react to state changes.
+- **State Lifting:** Managing data at the right level to ensure UI consistency.
+- **Responsive Components:** Using `aspectRatio`, `weight`, and `Adaptive Grids`.
+- **Material 3 Integration:** Utilizing the latest M3 components like `Scaffold`, `TopAppBar`, and `HorizontalDivider`.
+
+---
+
+*Crafted with precision for a smooth and aromatic developer experience.*

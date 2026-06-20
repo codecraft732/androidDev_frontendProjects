@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -140,33 +139,46 @@ fun HomeScreen(
                 onProfileClick = onProfileClick
             )
         }) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
-                .padding(innerPadding)
                 .fillMaxSize()
+                .background(Color.White)
+                .padding(innerPadding)
         ) {
-            HeaderSection()
-
-            Column(modifier = Modifier.padding(horizontal = 16.dp)) {
-                SearchBar()
-                Spacer(modifier = Modifier.height(24.dp))
-                PromoBanner()
-                Spacer(modifier = Modifier.height(24.dp))
-                CategoryChips(categories, selectedCategory) { selectedCategory = it }
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-
-            LazyVerticalGrid(
-                columns = GridCells.Adaptive(minSize = 160.dp),
+            // Dark background for the top section (halfway through the banner)
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                contentPadding = PaddingValues(bottom = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    .fillMaxWidth()
+                    .height(260.dp)
+                    .background(Color(0xFF1C1C1C))
+            )
+
+            Column(
+                modifier = Modifier.fillMaxSize()
             ) {
-                items(coffeeList) { coffee ->
-                    CoffeeCard(coffee, onClick = { onCoffeeClick(coffee) })
+                HeaderSection()
+
+                Column(modifier = Modifier.padding(horizontal = 12.dp)) {
+                    SearchBar()
+                    Spacer(modifier = Modifier.height(16.dp))
+                    PromoBanner()
+                    Spacer(modifier = Modifier.height(24.dp))
+                    CategoryChips(categories, selectedCategory) { selectedCategory = it }
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+
+                LazyVerticalGrid(
+                    columns = GridCells.Adaptive(minSize = 160.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    contentPadding = PaddingValues(bottom = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(coffeeList) { coffee ->
+                        CoffeeCard(coffee, onClick = { onCoffeeClick(coffee) })
+                    }
                 }
             }
         }
@@ -178,16 +190,18 @@ fun HeaderSection() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFF1C1C1C))
-            .padding(16.dp)
-            .padding(bottom = 32.dp)
+            .padding(top = 32.dp, start = 12.dp, end = 12.dp, bottom = 16.dp)
     ) {
-        Text(text = "Location", color = Color.Gray,
-            style= MaterialTheme.typography.titleSmall,
-            style= MaterialTheme.typography.titleSmall)
+        Text(
+            text = "Location", color = Color.Gray,
+            style = MaterialTheme.typography.titleSmall
+        )
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
-                text = "Janatha Rd, Palarivattom", color = Color.White, fontWeight = FontWeight.Bold
+                text = "Janatha Rd, Palarivattom",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleMedium
             )
             Icon(Icons.Default.KeyboardArrowDown, contentDescription = null, tint = Color.White)
         }
@@ -199,8 +213,7 @@ fun HeaderSection() {
 fun SearchBar() {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .offset(y = (-20).dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         TextField(
@@ -228,14 +241,18 @@ fun SearchBar() {
         Spacer(modifier = Modifier.width(12.dp))
         Box(
             modifier = Modifier
-                .size(52.dp)
-                .background(Color(0xFFDEA580), RoundedCornerShape(12.dp)),
+                .size(46.dp)
+                .background(
+                    Color(0xFFDEA580),
+                    RoundedCornerShape(12.dp)
+                ),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.regular_outline_filter),
                 contentDescription = null,
-                tint = Color.White
+                tint = Color.White, modifier = Modifier
+                    .size(24.dp)
             )
         }
     }
@@ -257,33 +274,6 @@ fun PromoBanner() {
         )
     }
 }
-//        Column(modifier = Modifier.padding(16.dp)) {
-//            Box(
-//                modifier = Modifier
-//                    .background(Color(0xFFED5151), RoundedCornerShape(8.dp))
-//                    .padding(horizontal = 8.dp, vertical = 4.dp)
-//            ) {
-//                Text(
-//                    text = "Promo",
-//                    color = Color.White,
-//                    fontSize = 12.sp,
-//                    fontWeight = FontWeight.Bold
-//                )
-//            }
-//            Spacer(modifier = Modifier.height(8.dp))
-//            Text(
-//                text = "Buy one get\none FREE",
-//                color = Color.White,
-//                fontSize = 20.sp,
-//                fontWeight = FontWeight.Bold,
-//                lineHeight = 26.sp,
-//                modifier = Modifier.background(Color.Black.copy(alpha = 0.5f))
-//            )
-//        }
-//    }
-//}
-
-
 
 
 @Composable
@@ -293,13 +283,13 @@ fun CategoryChips(categories: List<String>, selected: String, onSelect: (String)
             val isSelected = category == selected
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(8.dp))
                     .background(if (isSelected) Color(0xFFDEA580) else Color.White)
                     .clickable { onSelect(category) }
-                    .padding(horizontal = 16.dp, vertical = 8.dp)) {
+                    .padding(horizontal = 12.dp, vertical = 6.dp)) {
                 Text(
                     text = category,
-                    style= MaterialTheme.typography.titleSmall,
+                    style = MaterialTheme.typography.titleSmall,
                     color = if (isSelected) Color.White else Color.Black,
                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                 )
@@ -351,22 +341,43 @@ fun CoffeeCard(coffee: Coffee, onClick: () -> Unit) {
                 }
             }
             Column(modifier = Modifier.padding(12.dp)) {
-                Text(text = coffee.name, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text(text = coffee.description, color = Color.Gray, fontSize = 12.sp)
+                Text(
+                    text = coffee.name, fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = coffee.description,
+                    color = Color.Gray,
+                    style = MaterialTheme.typography.titleSmall
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "$ ${coffee.price}", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Text(
+                        text = "$ ${coffee.price}",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = Color(0xFFDEA580)
+                    )
                     Box(
                         modifier = Modifier
                             .size(32.dp)
-                            .background(Color(0xFFDEA580), RoundedCornerShape(10.dp)),
+                            .background(
+                                Color(0xFFDEA580),
+                                RoundedCornerShape(8.dp)
+                            ),
                         contentAlignment = Alignment.Center
                     ) {
-                        Icon(Icons.Default.Add, contentDescription = null, tint = Color.White)
+                        Icon(
+                            Icons.Default.Add,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(14.dp)
+                        )
                     }
                 }
             }

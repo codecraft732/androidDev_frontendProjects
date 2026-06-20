@@ -24,6 +24,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -42,7 +43,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.coffeeapp.R
 import com.example.coffeeapp.data.Coffee
 
@@ -81,7 +81,11 @@ fun OrderSummaryScreen() {
             TopAppBar(
                 title =
                     {
-                        Text("Order", fontWeight = FontWeight.Bold)
+                        Text(
+                            "Order",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
             )
         },
@@ -132,7 +136,7 @@ fun DeliverToggle() {
                     Color.Gray
             )
         ) {
-            Text("Deliver")
+            Text("Deliver", style = MaterialTheme.typography.titleSmall)
         }
         Button(
             onClick = { isDeliverSelected = false },
@@ -151,7 +155,7 @@ fun DeliverToggle() {
                     Color.Gray
             )
         ) {
-            Text("Pick Up")
+            Text("Pick Up", style = MaterialTheme.typography.titleSmall)
         }
     }
 }
@@ -176,28 +180,30 @@ fun CartItem(coffee: Coffee) {
         {
             Text(
                 text = coffee.name,
+                style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = coffee.description,
-                fontSize = 12.sp,
+                style = MaterialTheme.typography.titleSmall,
                 color = Color.Gray
             )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(
                 onClick = { if (quantity > 1) quantity-- },
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(26.dp)
             ) {
                 Icon(Icons.Default.Remove, contentDescription = null, tint = Color.Gray)
             }
             Text(
                 text = "$quantity",
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
             IconButton(
                 onClick = { quantity++ },
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(26.dp)
             ) {
                 Icon(Icons.Default.Add, contentDescription = null)
             }
@@ -213,7 +219,11 @@ fun OrderBottomSection() {
             .background(Color.White)
             .padding(24.dp)
     ) {
-        Text("Payment Summary", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(
+            "Payment Summary",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold
+        )
         Spacer(modifier = Modifier.height(12.dp))
         SummaryRow("Price", "$12.5")
         SummaryRow("Delivery Fee", "$1.0")
@@ -224,15 +234,17 @@ fun OrderBottomSection() {
             onClick = { /* TODO */ },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp),
-            shape = RoundedCornerShape(16.dp),
+                .height(42.dp),
+            shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDEA580))
         ) {
-            Text("Place Order", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(
+                "Place Order", fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleSmall
+            )
         }
     }
 }
-
 
 
 @Composable
@@ -243,11 +255,13 @@ fun SummaryRow(label: String, value: String, isTotal: Boolean = false) {
     ) {
         Text(
             text = label,
+            style = if (isTotal) MaterialTheme.typography.titleSmall else MaterialTheme.typography.bodyMedium,
             color = if (isTotal) Color.Black else Color.Gray,
             fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal
         )
         Text(
             text = value,
+            style = if (isTotal) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.Bold,
             color = if (isTotal) Color(0xFFDEA580) else Color.Black
         )
