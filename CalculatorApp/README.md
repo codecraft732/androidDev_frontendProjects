@@ -51,6 +51,6 @@ Here is a breakdown of how the project is organized:
 
 ## 📸 Screenshots
 <p align="center">
-![img1 (2).jpeg](app/src/main/res/drawable/img1%20%282%29.jpeg)
-![img.2.jpeg](app/src/main/res/drawable/img.2.jpeg)
+    <img src="![img1 (2).jpeg](app/src/main/res/drawable/img1%20%282%29.jpeg)"  width="180">
+    <img src="![img.2.jpeg](app/src/main/res/drawable/img.2.jpeg)" width="180">
 </p>
