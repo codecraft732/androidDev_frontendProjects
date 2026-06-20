@@ -59,8 +59,8 @@ com.example.banking_app/
 
 ## 📸 Screenshots
 <p align="center">
-![img1.jpeg](app/src/main/res/drawable/img1.jpeg)
-![img2.jpeg](app/src/main/res/drawable/img2.jpeg)
+    <img src="app/src/main/res/drawable/img1.jpeg" alt="img1" width="180">
+    <img src="app/src/main/res/drawable/img2.jpeg" alt="img2" width="180">
 </p>
 
 ---
