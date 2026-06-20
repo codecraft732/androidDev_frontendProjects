@@ -13,17 +13,23 @@ Every project here reflects real effort, real learning, and real passion for mob
 ⭐ If any project helps you or impresses you — a star means the world to me.
 
 
-
+---
 
 📱 Projects
+ProjectDescriptionKey Concepts
 
-ProjectDescriptionKey Concepts🏦 BankingAppA clean banking UI with account management screensJetpack Compose, Navigation, UI State
+🏦 BankingAppA clean banking UI with account management screensJetpack Compose, Navigation, UI State
+
 ☕ CoffeeAppCoffee ordering app with product listing and cart flowCompose UI, Lists, State Management
-🎲 DiceRollerGameSimple dice roller with animationCompose Basics, State, Randomization
-📸 InstagramInstagram-style feed and profile UI cloneCompose Layouts, LazyColumn, Image Handling
-❌⭕ TicTacToeGameTwo-player Tic Tac Toe game with win detection logicGame Logic, State, Compose Grid
-🧮 CalculatorAppFunctional calculator with clean UICompose, Expression Parsing, UI Design
 
+🎲 DiceRollerGameSimple dice roller with animationCompose Basics, State, Randomization
+
+📸 InstagramInstagram-style feed and profile UI cloneCompose Layouts, LazyColumn, Image Handling
+
+❌⭕ TicTacToeGameTwo-player Tic Tac Toe game with win detection logicGame Logic, State, Compose Grid
+
+🧮 CalculatorAppFunctional calculator with clean UICompose, Expression Parsing, UI Design
+---
 
 🛠️ Tech Stack
 
