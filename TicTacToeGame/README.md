@@ -23,6 +23,8 @@ This is a classic 3x3 Tic Tac Toe game designed for two players. It provides a s
 <p align="center">
     <img src="app/src/main/res/drawable/img1.jpeg" alt="img1" width="180">
     <img src="app/src/main/res/drawable/img2.jpeg" alt="img2" width="180">
+   <img src="app/src/main/res/drawable/img3.jpeg" alt="img2" width="180">
+   <img src="app/src/main/res/drawable/img4.jpeg" alt="img2" width="180">
 </p>
 
 ---
